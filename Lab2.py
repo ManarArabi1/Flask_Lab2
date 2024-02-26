@@ -19,8 +19,16 @@ def addUser():
         location = request.form.get('location')
         if id and name and age and location: 
             mongo.db.Users.insert_one({'id': id ,'name': name, 'age': age, 'location': location})
-    data = list(mongo.db.Users.find({}))  
-    return render_template('users.html', users=data) 
+        # else:
+        #     mongo.db.users.update_one({'_id': ObjectId(id)}, {'$set': {'name': name, 'age': age, 'location': location}})
+        #     return redirect('/users')
+
+    users = list(mongo.db.users.find({}))
+    if not users:
+        return "<h1> NO Users </h1>"
+    else:
+        return render_template('users.html', users=users)
+
 
 @app.route('/addUser')
 def createuser():
