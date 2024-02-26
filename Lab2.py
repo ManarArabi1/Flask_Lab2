@@ -17,7 +17,7 @@ def addUser():
         name = request.form.get('name')
         age = request.form.get('age')
         location = request.form.get('location')
-        if name and age and location: 
+        if id and name and age and location: 
             mongo.db.Users.insert_one({'id': id ,'name': name, 'age': age, 'location': location})
     data = list(mongo.db.Users.find({}))  
     return render_template('users.html', users=data) 
