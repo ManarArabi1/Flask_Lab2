@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block form %}
+<div class="container">
+    <h1 class="text-center mt-4">Users List</h1>
+    <div class="table-responsive">
+        <table class="table mx-auto"> 
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                    <th>Actions</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td> 
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.location }}</td>
+                    <td>
+                        <a href="{{ url_for('editUser', _id=user._id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ url_for('deleteUser', _id=user._id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-3">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('createuser') }}">Add New User</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

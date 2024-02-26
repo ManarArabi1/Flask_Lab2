@@ -1,0 +1,33 @@
+{% extends  'index.html' %}
+
+    
+    {% block form %}
+    <body>
+      <div class="contianer" style="max-width: 400px; margin: auto;">
+        <h1 class="text-center mt-4">Create New User</h1>
+       <form  method="POST"  action="{{ url_for('addUser') }}">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">ID</label>
+          <input type="text" name="id" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Age</label>
+          <input type="number" name="age" class="form-control" id="">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Location</label>
+            <input type="location" name="location" class="form-control" id="">
+          </div>
+          <div class="text-center mt-4"> 
+          <button type="submit" class="btn btn-dark">Save User</button>
+          </div>
+      </form>     
+        </div>
+   
+    </body>
+    {% endblock %}
+    
