@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 
-{% block body %}
+{% block form %}
 <div class="container">
     <h1 class="text-center mt-4">Users List</h1>
     <div class="table-responsive">
@@ -33,7 +33,7 @@
     <div class="mb-3">
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('createuser') }}">Add New User</a>
+                <a class="nav-link" href="{{ url_for('addUserForm') }}">Add New User</a>
             </li>
         </ul>
     </div>
