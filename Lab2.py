@@ -11,7 +11,7 @@ def home():
     return render_template('users.html')
 
 @app.route('/users', methods=['GET', 'POST'])
-def addUser():
+def manageUsers():
     if request.method == 'POST':
         id = request.form.get('id')
         name = request.form.get('name')
@@ -19,9 +19,9 @@ def addUser():
         location = request.form.get('location')
         if id and name and age and location: 
             mongo.db.Users.insert_one({'id': id ,'name': name, 'age': age, 'location': location})
-        # else:
-        #     mongo.db.users.update_one({'_id': ObjectId(id)}, {'$set': {'name': name, 'age': age, 'location': location}})
-        #     return redirect('/users')
+            return redirect('/users') 
+        else:
+            return "Error: Missing required fields"  
 
     users = list(mongo.db.users.find({}))
     if not users:
@@ -30,9 +30,10 @@ def addUser():
         return render_template('users.html', users=users)
 
 
-@app.route('/addUser')
-def createuser():
+@app.route('/addUser', methods=['GET'])
+def addUserForm():
     return render_template('addUser.html')
+
 
 @app.route('/usersList')
 def userList():
